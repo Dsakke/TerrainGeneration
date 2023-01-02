@@ -33,6 +33,12 @@ public class TerrainGeneration
         ApplyChanges();
     }
 
+    public void ResetTerrain()
+    {
+        float[,] pixels = new float[_textureWidth,_textureHeight];
+        _heightMap.SetHeights(0, 0, pixels);
+    }
+
     private void SimulateUplift()
     {
         _uplift.Step(_renderFrom, ref _renderTo);

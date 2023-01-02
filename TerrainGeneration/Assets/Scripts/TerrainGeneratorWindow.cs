@@ -39,5 +39,9 @@ public class TerrainGeneratorWindow : EditorWindow
         {
             _terrainGenerator.Simulate(1);
         }
+        if(GUILayout.Button("Reset terrain"))
+        {
+            _terrainGenerator.ResetTerrain();
+        }
     }
 }
