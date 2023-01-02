@@ -1,0 +1,15 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float> _output;
+RWTexture2D<float> _input;
+
+Texture2D<float> _upliftMap;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    _output[id.xy] = _input[id.xy] + _upliftMap[id.xy];
+}
