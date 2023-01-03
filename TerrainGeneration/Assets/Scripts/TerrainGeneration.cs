@@ -21,13 +21,11 @@ public class TerrainGeneration
 
     public void Simulate(int nrIterations)
     {
-        Initialize();
         for(int i = 0; i < nrIterations; ++i)
         {
             SimulateUplift();
             RenderTexture temp = _renderFrom;
             _renderFrom = _renderTo;
-            _renderTo = _renderFrom;
             RenderTexture.active = _renderTo;
         }
         ApplyChanges();
@@ -44,7 +42,7 @@ public class TerrainGeneration
         _uplift.Step(_renderFrom, ref _renderTo);
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         RenderTextureDescriptor textureDescriptor = new RenderTextureDescriptor(_textureWidth, _textureHeight, RenderTextureFormat.RFloat);
         textureDescriptor.enableRandomWrite = true;

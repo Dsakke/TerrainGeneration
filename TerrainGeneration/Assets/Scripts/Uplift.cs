@@ -16,9 +16,10 @@ public class Uplift : TerrainAlgorithm
         ComputeShader _shader = Resources.Load<ComputeShader>("Shaders/Uplift");
         int kernel = _shader.FindKernel("CSMain");
 
-        _shader.SetTexture(0, "_input", input);
-        _shader.SetTexture(0, "_upliftMap", _upliftMap);
-        _shader.SetTexture(0, "_output", output);
+        _shader.SetTexture(kernel, "_input", input);
+        _shader.SetTexture(kernel, "_upliftMap", _upliftMap);
+        _shader.SetTexture(kernel, "_output", output);
+        _shader.SetFloat("_upliftStrength", _upliftStrength);
 
         _shader.Dispatch(kernel, 2048, 2048, 1);
     }

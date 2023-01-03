@@ -18,6 +18,11 @@ public class TerrainGeneratorWindow : EditorWindow
         GetWindow(typeof(TerrainGeneratorWindow));
     }
 
+    private void OnEnable()
+    {
+        _terrainGenerator.Initialize();
+    }
+
     private void OnGUI()
     {
         GUILayout.Label("Settings", EditorStyles.boldLabel);
