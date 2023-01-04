@@ -11,6 +11,10 @@ public class Uplift : TerrainAlgorithm
     [SerializeField, Tooltip("The maximum amount of uplift that will occur in one step. (meters)")]
     private float _upliftStrength = 0.1f;
 
+    public override void Initialize(TerrainData input)
+    {
+    }
+
     public override void Step(RenderTexture input, ref RenderTexture output)
     {
         ComputeShader _shader = Resources.Load<ComputeShader>("Shaders/Uplift");
