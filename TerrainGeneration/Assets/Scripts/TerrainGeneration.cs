@@ -19,6 +19,10 @@ public class TerrainGeneration
     [SerializeField]
     private Uplift _uplift = null;
 
+    [Header("Fluvial Erosion Settings")]
+    [SerializeField]
+    private FluvialErosion _fluvialErosion = null;
+
     public void Simulate(int nrIterations)
     {
         for(int i = 0; i < nrIterations; ++i)
@@ -26,8 +30,10 @@ public class TerrainGeneration
             SimulateUplift();
             RenderTexture temp = _renderFrom;
             _renderFrom = _renderTo;
-            RenderTexture.active = _renderTo;
+            _renderTo = temp;
+
         }
+        RenderTexture.active = _renderTo;
         ApplyChanges();
     }
 
